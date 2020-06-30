@@ -12,7 +12,7 @@
 
 
 
-<title>Leetocde_72_Edit_Distance | Haihao Sun&#39;s Blog</title>
+<title>Leetcode_72_Edit_Distance | Haihao Sun&#39;s Blog</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Leetocde_72_Edit_Distance</h1>
+            <h1 class="post-title">Leetcode_72_Edit_Distance</h1>
             
                 <div class="post-meta">
                     
@@ -198,7 +198,9 @@
         </header>
 
         <div class="post-content">
-            <p><a href="https://leetcode.com/problems/edit-distance/" target="_blank" rel="noopener">link to Leetcode_72_edit_distance</a></p>
+            <img src="https://giantbomb1.cbsistatic.com/uploads/square_small/13/135472/1891829-060poliwag.png" style="width:200px;">
+[link to Leetcode_72_edit_distance](https://leetcode.com/problems/edit-distance/)
+
 <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description:"></a>Problem Description:</h2><p>Given two words word1 and word2, find the minimum number of operations required to convert word1 to word2.</p>
 <p>You have the following 3 operations permitted on a word:</p>
 <p>Insert a character<br>Delete a character<br>Replace a character<br>Example 1:</p>
@@ -208,7 +210,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minDistance</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="Problem-Discussion"><a href="#Problem-Discussion" class="headerlink" title="Problem Discussion:"></a>Problem Discussion:</h2><h3 id="category-DP-Dynamic-Programming"><a href="#category-DP-Dynamic-Programming" class="headerlink" title="category: DP(Dynamic Programming)"></a>category: DP(Dynamic Programming)</h3><h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>This is a classic 2-dimension DP problem, and we need to find transition function, dp state in order to solve it.</p>
+<h2 id="Problem-Discussion"><a href="#Problem-Discussion" class="headerlink" title="Problem Discussion:"></a>Problem Discussion:</h2><h3 id="category-DP-Dynamic-Programming-gt-water-pokemon"><a href="#category-DP-Dynamic-Programming-gt-water-pokemon" class="headerlink" title="category: DP(Dynamic Programming) -&gt; water pokemon"></a>category: DP(Dynamic Programming) -&gt; water pokemon</h3><h3 id="Intuition"><a href="#Intuition" class="headerlink" title="Intuition:"></a>Intuition:</h3><p>This is a classic 2-dimension DP problem, and we need to find transition function, dp state in order to solve it.</p>
 <h4 id="step1-start-by-comparing-the-last-character"><a href="#step1-start-by-comparing-the-last-character" class="headerlink" title="step1: start by comparing the last character"></a>step1: start by comparing the last character</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">caseI: if the last characters are the same:</span><br><span class="line">	word1 &#x3D; &quot;simon&quot;, word2 &#x3D; &quot;sun&quot;</span><br><span class="line">	solve(5, 3) &#x3D; solve(4, 2) since we can just jump the last character</span><br><span class="line"></span><br><span class="line">caseII: if the last characters are different:</span><br><span class="line">	word1 &#x3D; &quot;hai&quot; word2 &#x3D; &quot;hao&quot;</span><br><span class="line"></span><br><span class="line">	there are three ways to find the operation distance, and the edit </span><br><span class="line">    distance is namely the smallest among those three. Therefore, we </span><br><span class="line">    simply compute those 3 options, and pick the minimun, below I also </span><br><span class="line">    provided the reasoning and examples.</span><br><span class="line">	</span><br><span class="line">	sol1: we simply cut the last character in word1</span><br><span class="line">		solve(3, 3) &#x3D; solve(2, 3) + 1</span><br><span class="line">	sol2: by symmetry, we cut the last character in word2.</span><br><span class="line">		solve(3, 3) &#x3D; solve(3, 2) + 1</span><br><span class="line">	sol3: we change char &quot;i&quot; to &quot;o&quot;</span><br><span class="line">		solve(3, 3) &#x3D; solve(2, 2) + 1</span><br><span class="line"></span><br><span class="line">	In caseII, we need to increment 1 since we do 1 operation, </span><br><span class="line">    heither cutting character in word1, word2, or change the last character</span><br></pre></td></tr></table></figure>
 
 
@@ -273,7 +275,7 @@
                 <a class="prev" rel="prev" href="/2020/06/28/How-to-watch-youtube-without-annoying-ADs/">How to watch youtube without annoying ADs?</a>
             
             
-            <a class="next" rel="next" href="/2020/06/28/test/">Leetocde_72_Edit_Distance</a>
+            <a class="next" rel="next" href="/2020/06/27/My-First-Blog-About-FAMILY/">My First Blog About FAMILY</a>
             
         </section>
 
