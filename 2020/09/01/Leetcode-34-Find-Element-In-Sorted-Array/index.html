@@ -12,7 +12,7 @@
 
 
 
-<title>Leetcode-210-Course-Schedule-II | Haihao Sun&#39;s Blog</title>
+<title>Leetcode-34-Find-Element-In-Sorted-Array | Haihao Sun&#39;s Blog</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Leetcode-210-Course-Schedule-II</h1>
+            <h1 class="post-title">Leetcode-34-Find-Element-In-Sorted-Array</h1>
             
                 <div class="post-meta">
                     
@@ -182,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">August 31, 2020&nbsp;&nbsp;11:30:29</a>
+                        Date: <a href="#">September 1, 2020&nbsp;&nbsp;22:17:42</a>
                         </span>
                     
                     
@@ -198,25 +198,24 @@
         </header>
 
         <div class="post-content">
-            <img src="https://qph.fs.quoracdn.net/main-qimg-77d698cdd9bf68f8e702f32a6144c848" alt="juyecao" style="width:200px;">
+            <img src="https://cdn.bulbagarden.net/upload/thumb/6/6f/297Hariyama.png/250px-297Hariyama.png" alt="juyecao" style="width:200px;">
 
-
-<p><a href="https://leetcode.com/problems/course-schedule-ii/" target="_blank" rel="noopener">210. Course Schedule II</a></p>
+<p><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" rel="noopener">34. Find First and Last Position of Element in Sorted Array</a></p>
 <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>
-There are a total of n courses you have to take labelled from 0 to n - 1.
 
-<p>Some courses may have prerequisites, for example, if prerequisites[i] = [ai, bi] this means you must take the course bi before the course ai.</p>
-<p>Given the total number of courses numCourses and a list of the prerequisite pairs, return the ordering of courses you should take to finish all courses.</p>
-<p>If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.</p>
+<p>Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.</p>
+<p>Your algorithm’s runtime complexity must be in the order of O(log n).</p>
+<p>If the target is not found in the array, return [-1, -1].</p>
 </p>
 
-
 <p>Example 1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: numCourses &#x3D; 2, prerequisites &#x3D; [[1,0]]</span><br><span class="line">Output: [0,1]</span><br><span class="line">Explanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1].</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [5,7,7,8,8,10], target &#x3D; 8</span><br><span class="line">Output: [3,4]</span><br></pre></td></tr></table></figure>
 
+<p>Example 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [5,7,7,8,8,10], target &#x3D; 6</span><br><span class="line">Output: [-1,-1]</span><br></pre></td></tr></table></figure>
 
-<h2 id="Problem-Discussion"><a href="#Problem-Discussion" class="headerlink" title="Problem Discussion:"></a>Problem Discussion:</h2><p>This problem is a very classic graph problem which involves topological sorting. Additionally, if we view the course schedule as the graph, and there exists an edge starting from the node a to node b if we need to take class a before taking class b; then, we need to figure whethere there is a cycle in the graph that we mentioend before. </p>
-<h2 id="Problem-Solution"><a href="#Problem-Solution" class="headerlink" title="Problem Solution"></a>Problem Solution</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">findOrder</span><span class="params">(<span class="keyword">int</span> numCourses, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; prerequisites)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; edge;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">in_degree</span><span class="params">(numCourses, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">graph</span><span class="params">(numCourses)</span></span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(edge e : prerequisites)&#123;</span><br><span class="line">            graph[e[<span class="number">1</span>]].push_back(e[<span class="number">0</span>]);</span><br><span class="line">            in_degree[e[<span class="number">0</span>]] ++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; in_degree.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(in_degree[i] == <span class="number">0</span>)&#123;</span><br><span class="line">                q.push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> cur_node = q[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; graph[cur_node].size(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(--in_degree[graph[cur_node][j]] == <span class="number">0</span>)&#123;</span><br><span class="line">                    q.push_back(graph[cur_node][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> q.size() == numCourses ? q : <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Problem-Discussion"><a href="#Problem-Discussion" class="headerlink" title="Problem Discussion:"></a>Problem Discussion:</h2><p>We can use the idea of binary search to find the index where the nums[m] == target;<br>After that, we can do the expand to find the left position and right position of the result</p>
+<h2 id="Problem-Solution"><a href="#Problem-Solution" class="headerlink" title="Problem Solution:"></a>Problem Solution:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">searchRange</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.size() == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = nums.size() - <span class="number">1</span>, sol = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(r &gt;= l)&#123;</span><br><span class="line">            <span class="keyword">int</span> m = (r - l) /<span class="number">2</span>  + l;</span><br><span class="line">            <span class="keyword">if</span>(nums[m] == target)&#123;</span><br><span class="line">                sol = m;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[m] &gt; target)&#123;</span><br><span class="line">                r = m - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                l = m + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(nums[sol] == target)&#123;</span><br><span class="line">            <span class="keyword">int</span> l_sol = sol;</span><br><span class="line">            <span class="keyword">int</span> r_sol = sol;</span><br><span class="line">            <span class="keyword">while</span>(l_sol &gt;= <span class="number">0</span> &amp;&amp; nums[l_sol] == target)&#123;</span><br><span class="line">                l_sol -= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(r_sol &lt; nums.size() &amp;&amp; nums[r_sol] == target)&#123;</span><br><span class="line">                r_sol += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;l_sol + <span class="number">1</span>, r_sol - <span class="number">1</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
         </div>
 
         
@@ -230,7 +229,7 @@ There are a total of n courses you have to take labelled from 0 to n - 1.
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://haihao-sun.github.io/2020/08/31/Leetcode-210-Course-Schedule-II/">http://haihao-sun.github.io/2020/08/31/Leetcode-210-Course-Schedule-II/</a></span>
+                        <span><a href="http://haihao-sun.github.io/2020/09/01/Leetcode-34-Find-Element-In-Sorted-Array/">http://haihao-sun.github.io/2020/09/01/Leetcode-34-Find-Element-In-Sorted-Array/</a></span>
                     </p>
                 
                 
@@ -267,10 +266,8 @@ There are a total of n courses you have to take labelled from 0 to n - 1.
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/09/01/Leetcode-34-Find-Element-In-Sorted-Array/">Leetcode-34-Find-Element-In-Sorted-Array</a>
             
-            
-            <a class="next" rel="next" href="/2020/08/28/newcoder-string-transform/">newcoder-string-transform</a>
+            <a class="next" rel="next" href="/2020/08/31/Leetcode-210-Course-Schedule-II/">Leetcode-210-Course-Schedule-II</a>
             
         </section>
 
