@@ -200,7 +200,7 @@
         <div class="post-content">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSPwN6p1NoMDZLT7-DEZegjntkanbo3IjsCyA&usqp=CAU">
 
-<h3 id="1-Reference-and-Pointer"><a href="#1-Reference-and-Pointer" class="headerlink" title="1. Reference and Pointer"></a>1. Reference and Pointer</h3><ul>
+<h2 id="1-Reference-and-Pointer"><a href="#1-Reference-and-Pointer" class="headerlink" title="1. Reference and Pointer"></a>1. Reference and Pointer</h2><ul>
 <li>reference cannot be empty, but pointer  could potentially be nullptr</li>
 <li>reference cannot be reassigned to another value, but we can use pointer to point to another object</li>
 <li>destroy, create reference will not call the destructor and constructor</li>
@@ -209,7 +209,7 @@
 <p>Pointer has its value, and memmory address (double pointer)</p>
 <p><img src=
 "https://image-cdn.hypb.st/https%3A%2F%2Fhk.hypebeast.com%2Ffiles%2F2019%2F04%2Fhttps___hypebeast.com_image_2019_04_naruto-ramen-ichiraku-official-1-1.jpg?q=75&w=800&cbr=1&fit=max" ></p>
-<h3 id="2-Virtual-and-Pure-Virtual-Function"><a href="#2-Virtual-and-Pure-Virtual-Function" class="headerlink" title="2. Virtual and Pure Virtual Function"></a>2. Virtual and Pure Virtual Function</h3><h4 id="Do-we-need-to-override-pure-virtual-function-in-cpp"><a href="#Do-we-need-to-override-pure-virtual-function-in-cpp" class="headerlink" title="Do we need to override (pure) virtual function in cpp?"></a>Do we need to override (pure) virtual function in cpp?</h4><ul>
+<h2 id="2-Virtual-and-Pure-Virtual-Function"><a href="#2-Virtual-and-Pure-Virtual-Function" class="headerlink" title="2. Virtual and Pure Virtual Function"></a>2. Virtual and Pure Virtual Function</h2><h4 id="Do-we-need-to-override-pure-virtual-function-in-cpp"><a href="#Do-we-need-to-override-pure-virtual-function-in-cpp" class="headerlink" title="Do we need to override (pure) virtual function in cpp?"></a>Do we need to override (pure) virtual function in cpp?</h4><ul>
 <li>We can override Virtual Function, and we can also choose not to, but if we do not override the virtual function, the child class will use the virtual function in the parent class.</li>
 <li>We HAVE TO override pure virtual function, and we cannot create object for class that has pure virtual class since this function is not defined in this class.</li>
 </ul>
@@ -229,7 +229,7 @@
 </ul>
 <img src="https://upload.wikimedia.org/wikipedia/zh/a/a9/%E5%A4%A7%E5%92%8C.png">
 
-<h3 id="3-Const"><a href="#3-Const" class="headerlink" title="3. Const"></a>3. Const</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const int a &#x3D; 42;      we cannnot reassign a to be another value such as 41</span><br><span class="line">int const b &#x3D; 42;      same as the one above;</span><br></pre></td></tr></table></figure>
+<h2 id="3-Const"><a href="#3-Const" class="headerlink" title="3. Const"></a>3. Const</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const int a &#x3D; 42;      we cannnot reassign a to be another value such as 41</span><br><span class="line">int const b &#x3D; 42;      same as the one above;</span><br></pre></td></tr></table></figure>
 
 <p>int a = 10;</p>
 <ul>
@@ -249,10 +249,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const int * const ptr4 &#x3D; &amp;a;</span><br></pre></td></tr></table></figure>
 
 <img src="https://cdn2.ettoday.net/images/1359/d1359278.jpg">
-### Smart Pointer
 
-
-<h4 id="What-is-smart-pointer-and-why-we-need-it"><a href="#What-is-smart-pointer-and-why-we-need-it" class="headerlink" title="What is smart pointer, and why we need it?"></a>What is smart pointer, and why we need it?</h4><p>Oftentimes, it is very common to forget to delete the object that we just new before. Additionally, there might be errors or exception in the function that we call after use <strong>new</strong> keyword. Therefore, we can use smart  pointer to simulate the garbage collector in Java! </p>
+<h2 id="4-Smart-Pointer"><a href="#4-Smart-Pointer" class="headerlink" title="4.Smart Pointer"></a>4.Smart Pointer</h2><h4 id="What-is-smart-pointer-and-why-we-need-it"><a href="#What-is-smart-pointer-and-why-we-need-it" class="headerlink" title="What is smart pointer, and why we need it?"></a>What is smart pointer, and why we need it?</h4><p>Oftentimes, it is very common to forget to delete the object that we just new before. Additionally, there might be errors or exception in the function that we call after use <strong>new</strong> keyword. Therefore, we can use smart  pointer to simulate the garbage collector in Java! </p>
 <p>Just Make your C++ look like Java.</p>
 <h4 id="Four-Common-Smart-Pointer"><a href="#Four-Common-Smart-Pointer" class="headerlink" title="Four Common Smart Pointer"></a>Four Common Smart Pointer</h4><ul>
 <li>unique_ptr: cannot be copied</li>
